@@ -14,9 +14,98 @@ public static int[][] ticbox;
  		
 		//check both diagonals 
 		
+		int ele;
+		int row, col = 0;
+		boolean isEqual = true;
+		for(row = 0; row < 3; row++)
+		{
+			ele = tic[row][col];
+		    if(ele == 0)
+		    	continue;
+		    else
+		    {
+		    	isEqual = true;
+		    	for(col = 1;col < 3; col++ )
+		    	{
+		    		if(ele != tic[row][col])
+		    		{
+		    			isEqual = false;
+		    			break;
+		    		}
+		    	}
+		    	if(isEqual)
+		    		return ele;
+		    }
+		    		
+		}
+		row = 0;
+		isEqual = true;
+		for(col = 0; col < 3; col++ )
+		{
+			ele = tic[row][col];
+			if(ele == 0)
+				continue;
+			else
+			{
+				isEqual = true;
+				for(row = 1; row < 3; row++)
+				{
+					if(ele != tic[row][col])
+					{
+						isEqual = false;
+						break;
+					}
+				}
+				if(isEqual)
+					return ele;
+					
+			}
+		}
+		row = 0; col = 0;
+		isEqual = false;
+		
+		ele = tic[row][col];
+		if(ele != 0)
+		{
+			isEqual = true;
+			row++;
+			col++;
+			while(row < 3 )
+			{
+				if(ele != tic[row][col])
+				{
+					isEqual = false;
+					break;
+				}
+				  row++;
+				  col++;
+			}
+		}
+		if(isEqual)
+			return ele;
+		row = 0; col = 2;
+		ele = tic[row][col];
+		if(ele != 0)
+		{
+			isEqual = true;
+			col--;
+			row++;
+			while(row < 3 && col >= 0)
+			{
+				if(ele != tic[row][col])
+				{
+					isEqual = false;
+					break;
+				}
+				row++;
+				col--;
+			}
 		
 		
-		//write your code here !!!
+		}
+		if(isEqual)
+			return ele;
+		//}write your code here !!!
 		
 		
 		
@@ -37,7 +126,8 @@ public static int[][] ticbox;
 		//check if a2 is between 0 & 3
 		//check if the selected box is empty ie, already not marked by other player
 		//if all checks passed return true.
-		
+		if((a1 >= 0 && a1 <= 2) && (a2 >= 0 && a2 <= 2) && tic[a1][a2] == 0)
+			 return true;
 		
 		//Write your code here !!!
 		
